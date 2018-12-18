@@ -1,1 +1,32 @@
-<h1>hfhgfj</h1>
+<html>
+<head>
+<script src="https://unpkg.com/react@15/dist/react.min.js"> </script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js">
+</script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+
+
+function Welcome(props){
+	return <h1>Hello, {props.name}</h1>
+}
+
+function App() {
+  return (
+    <div>
+      <Welcome name="Sara" />
+      <Welcome name="Cahal" />
+      <Welcome name="Edite" />
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
+
+</script>
+</body>
+</html>

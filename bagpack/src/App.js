@@ -1,54 +1,73 @@
 import React, { Component } from 'react';
 import './App.css';
+// import Check from "./Check.js";
+import AddItems from "./AddItems.js";
+import Unpacked from "./Unpacked.js";
+import Items from "./Items.js";
+
 
 class App extends Component {
- constructor(props){
-  super(props);
+ constructor(){
+  super();
   this.state = {
-    items: [],
-    currentText: ""
+    items: []
   }
  }
 
-handleChange = (e) => {
-  this.setState({currentText: e.target.value})
+ add = (value) => {
+  if(!value.value) return 
+  this.setState({items: [value, ...this.state.items]});
+ }
+
+unpackAll = () => {
+  var unpack = this.state.items.map(item => {
+    item.done = false
+    return item
+  })
+  this.setState({item: unpack})
 }
 
-
-handleSubmit = (e) => {
-  e.preventDefault();
-  const newItem = this.state.currentText;
-    if(!newItem) return
-    // console.log(newItem)
-    var newList = {
-      name: newItem,
-      id: Date.now(),
-      done: false
+ handleCheck = (id) => {
+  const itemlist = this.state.items.map(item => {
+    if(item.id == id){
+      item.done = !item.done
     }
-    console.log(newList)
-    const items = [newItem, ...this.state.items]
-    this.setState({
-      items: items,
-      currentText: ''
-    })
-}
+    return item
+  })
+  this.setState({items: itemlist})
+ }
 
-// handleCheck = e => {
-//   this.state.
-// }
-
+ RemoveItem = (id) => {
+  const removeList = this.state.items.filter(item => item.id !== id)
+ this.setState({items: removeList})
+ }
 
   render() {
+    const unpacked = this.state.items.filter(item => !item.done);
+    const packed = this.state.items.filter(item => item.done);
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="todo" value={this.state.currentText} onChange={this.handleChange} placeholder="Enter Name" className="new_item" />
-        <button type="submit">+Add</button>
-        <h1>Unpacked Items</h1>
-        {
-          this.state.items.map(item =>(
-          <p><input key={item.id} type="checkbox"/>{item}<button>Remove</button></p>))
-        }
-      </form>
+      <div className="wrapper">
+        <AddItems add = {this.add} />
+
+        <Items
+        title="UnPacked Items"
+          items={unpacked}
+          handleCheck={this.handleCheck}
+          RemoveItem={this.RemoveItem}
+
+        />
+
+        <Items
+        title="Packed Items"
+          items={packed}
+          handleCheck={this.handleCheck}
+          RemoveItem={this.RemoveItem}
+        />
+
+        <Unpacked unpackAll = {this.unpackAll} />
+
+      </div>
     )
   }
 }
