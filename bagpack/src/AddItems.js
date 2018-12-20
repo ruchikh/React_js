@@ -29,7 +29,7 @@ render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="todo" value={this.state.currentText} onChange={this.handleChange} placeholder="Enter Name" className="new_item" />
-        <button type="submit">+Add</button>
+        <button className="add-btn" type="submit">+Add</button>
       </form>
     )
   }

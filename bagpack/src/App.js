@@ -4,6 +4,8 @@ import './App.css';
 import AddItems from "./AddItems.js";
 import Unpacked from "./Unpacked.js";
 import Items from "./Items.js";
+import SearchItem from "./SearchItem.js";
+
 
 
 class App extends Component {
@@ -42,6 +44,14 @@ unpackAll = () => {
  this.setState({items: removeList})
  }
 
+ SearchItem = (e) => {
+  console.log(e.target.value)
+  var findValue = this.state.items.filter((val, i) => {
+   console.log(val.value.includes(val))
+  })
+    this.setState({items: findValue})
+  }
+ 
   render() {
     const unpacked = this.state.items.filter(item => !item.done);
     const packed = this.state.items.filter(item => item.done);
@@ -58,6 +68,8 @@ unpackAll = () => {
 
         />
 
+        <SearchItem searchItem = {this.SearchItem} />
+
         <Items
         title="Packed Items"
           items={packed}
@@ -65,7 +77,13 @@ unpackAll = () => {
           RemoveItem={this.RemoveItem}
         />
 
+
+
+
+
+
         <Unpacked unpackAll = {this.unpackAll} />
+
 
       </div>
     )

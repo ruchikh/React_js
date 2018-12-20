@@ -5,7 +5,7 @@ export default class Item extends Component {
     const { value, done, id } = this.props.itemList;
     return (
       <li>
-        <input type="checkbox" checked={done} onChange={() => this.props.handleCheck(id)} />
+        <input type="checkbox" className="check" checked={done} onChange={() => this.props.handleCheck(id)} />
         <span>{value}</span>
         <button className="delete__item" onClick = {() => this.props.RemoveItem(id)}>Delete</button>
       </li>
