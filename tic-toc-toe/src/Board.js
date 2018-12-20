@@ -17,7 +17,7 @@ export default class Board extends React.Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice();
-    this.state.history.push(squares)
+    this.state.history.push(this.state.squares);
 
     if(calculateWinner(squares) || squares[i]){
       return 
@@ -30,12 +30,10 @@ export default class Board extends React.Component {
     });
   }
 
-  handleHistory = (e) => {
+  handleHistory = () => {
     this.setState({
-      squares: this.state.history.pop() || this.state.squares,
-      xIsNext: !this.state.xIsNext
-
-
+      squares: this.state.history.pop() || this.state.history,
+      xIsNext: !this.state.xIsNext  
     })
   }
 
@@ -77,11 +75,10 @@ export default class Board extends React.Component {
         </div>
 
         <div>
-         <button className="htr-btn" onClick = {this.handleHistory}> History</button>
+         <button className="htr-btn" onClick={this.handleHistory}>History</button>
         </div>
-         <div className="game-info">
+        <div className="game-info">
           <div>{status}</div>
-          
         </div>
 
       </div>
