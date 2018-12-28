@@ -20,16 +20,19 @@ export default class Compare extends Component {
 						{
 							compareList && compareList.map( (data, index) => {
 							return (	
+							<div>
+
 							<div className ="compare-list" id={index}>
-								<div className = "img-bg">
-								<img className="avatar"src={data.avatar_url} />
-								<h3>{data.name}</h3>
-								<h4>followers :- {data.followers}</h4>
-								<h4>following :- {data.following}</h4>
-								<h4>public_repos :- {data.public_repos}</h4>
-								<button className="user-btn" onClick = {() => {this.props.removeUser(index)}}>Remove</button>
-								</div>
+								<table className = "img-bg">
+								<tr>
+								<td>{data.name}</td>
+								<td>{data.followers}</td>
+								<td>{data.following}</td>
+								<td>{data.public_repos}</td>
+								</tr>
+								</table>
 							</div>		
+							</div>
 							)
 							})
 						}
@@ -41,3 +44,4 @@ export default class Compare extends Component {
 	}
 }
 
+							// <button className="user-btn" onClick = {() => {this.props.removeUser(index)}}>Remove</button>

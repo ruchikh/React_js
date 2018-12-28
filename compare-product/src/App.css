@@ -38,26 +38,44 @@
 .img-bg {
   background: rgb(0, 38, 51);
   color: white;
-  box-shadow: 5px 5px 5px 5px #ccc;
+  /*box-shadow: 5px 5px 5px 5px #ccc;*/
   /*display: none;  */
 }
 
 .img-bg:hover {
-  box-shadow: 5px 5px 5px 5px #666;
+  /*box-shadow: 5px 5px 5px 5px #666;*/
 
 }
 
 .Compare-user{
   display: grid;
-  /*grid-template-columns: repeat(1, 1fr);*/
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+  /*place-items: center;*/
 
 }
 
+table {
+  /*font-family: animation-iteration-count: al, sans-serif;*/
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  /*background-color: #dddddd;*/
+}
 
 .compare-list{
-  display: grid;
+  /*display: grid;*/
+  /*grid-template-columns: 1fr 1fr 1fr;*/
   grid-gap: 20px;
   text-align: center;
   display: inline-block;

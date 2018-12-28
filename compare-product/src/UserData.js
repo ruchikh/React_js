@@ -7,7 +7,13 @@ export default class UserData extends Component {
 		super();
 		this.state = {
 			users: [],
-			compareList: [],
+			compareList: [{
+				name: "Name",
+				followers: "Followers",
+				following: "Following",
+				public_repos: "Public_repos",
+				button: "Button"
+			}],
 			count: null
 		}
 	}

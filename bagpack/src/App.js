@@ -76,14 +76,7 @@ unpackAll = () => {
           handleCheck={this.handleCheck}
           RemoveItem={this.RemoveItem}
         />
-
-
-
-
-
-
         <Unpacked unpackAll = {this.unpackAll} />
-
 
       </div>
     )
