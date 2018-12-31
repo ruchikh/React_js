@@ -45,6 +45,7 @@ class App extends Component {
   }
 
   handleCheck = (e) => {
+    console.log(e);
     let checkItem = this.state.shopingItems.filter((v, i) => v.availableSizes.includes(e.target.value));
     console.log(checkItem)
     this.setState({
@@ -61,8 +62,6 @@ class App extends Component {
         <header className="App-header">
           <a
             className="App-link"
-            href="http://ruchikh.github.io"
-            target="_blank"
             rel="noopener noreferrer"
           > Sizes:
           </a>
@@ -73,7 +72,6 @@ class App extends Component {
           </h4>
           <a
             className="App-link"
-            href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >Order By
@@ -87,7 +85,7 @@ class App extends Component {
         </form>
       </header>
         <div className="main-container">
-        <ProductSize shopingItems={this.state.shopingItems} handleCheck={this.handleCheck}/>
+        <ProductSize shopingItems={this.state.shopingItems} handleCheck={this.handleCheck} />
         {
           (this.state.newArray.length) ? <CheckItems newArray={this.state.newArray} handleChange = {this.handleChange}/> : <Product shopingItems = {this.state.shopingItems} handleChange = {this.handleChange} />
 

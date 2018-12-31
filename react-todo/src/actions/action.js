@@ -8,6 +8,6 @@ export function addTodo(value){
 export function removeTodo(index){
 	return {
 		type: "DELETE_TODO",
-		index
+		index	
 	}
 }

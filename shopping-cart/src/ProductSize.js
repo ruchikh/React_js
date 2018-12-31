@@ -12,8 +12,8 @@ class ProductSize extends Component {
           <label for="check_1">S</label>
         </li>
         <li>
-          <input type="checkbox" id="check_2" name="check_2" value="SX" onChange={this.props.handleCheck}/>
-          <label for="check_2">SX</label>
+          <input type="checkbox" id="check_2" name="check_2" value="XS" onChange={this.props.handleCheck}/>
+          <label for="check_2">XS</label>
         </li>
         <li>
           <input type="checkbox" id="check_3" name="check_3" value="M" onChange={this.props.handleCheck}/>
