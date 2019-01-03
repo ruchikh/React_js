@@ -16,7 +16,7 @@ class ProductSize extends Component{
             {
               
             <li>
-              <input type="checkbox" id={i} name="check_1" value={value} onClick={handleCheck} className="size-text"/>
+              <input type="checkbox" id={i} name="check_1" value={value} onClick={handleCheck} />
               <label for={i} >{value}</label>
             </li>
 

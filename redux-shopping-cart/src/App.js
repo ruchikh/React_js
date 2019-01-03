@@ -5,6 +5,7 @@ import ProductSize from './components/ProductSize'
 import Product from './components/Product';
 import {displayData, addToCart, sortedData, filterSize, getSizesMenu} from './actions'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class App extends Component {
  
@@ -25,13 +26,14 @@ class App extends Component {
 
   handleSelect = (e) => {
    (e.target.value === "heighest to Lowest") ? this.props.itemsDisplay.sort((a, b) => (b.price - a.price)) : this.props.itemsDisplay.sort((a, b) => (a.price - b.price))
-   this.props.sortedData()
+  this.props.sortedData()
   }
+  
   
   handleCheck = (e) => {
     this.props.filterSize(e.target.value)
-
   }
+
   render() {
 
     return (
@@ -39,7 +41,9 @@ class App extends Component {
         <Cart cartItems={this.props.addItems} handleClick={this.handleClick} />
           <header className="App-header">
             <a className="App-link"> Sizes: </a> 
-            <a className="App-link">{}item Founds</a>
+            <a className="App-link">{
+            (this.props.arraySize.length) ? this.props.arraySize.length : this.props.itemsDisplay.length
+          } Product(s) found</a>
             <a className="App-link" >Order By </a>
             <form>
               <select className="option-val" onChange={(e) => this.handleSelect(e)}>

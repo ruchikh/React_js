@@ -46,7 +46,14 @@ export default function rootReducer(state = initialState, action){
       	...state,
       	shoppingItems: filterSize
       }
-      	
+      }
+      case "CART_DELETE":{
+      	state.favourites.splice(action.index, 1)
+      	return{
+      		...state,
+      		favourites: [...state.favourites]
+
+      	}
       }
 
     default:

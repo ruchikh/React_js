@@ -31,3 +31,10 @@ export function getSizesMenu(){
   }
 }
 
+export function cartdItemDelete(index){
+  return {
+    type: "CART_DELETE",
+    index
+  }
+}
+
