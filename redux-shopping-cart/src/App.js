@@ -3,7 +3,7 @@ import './App.css'
 import Cart from './components/Cart'
 import ProductSize from './components/ProductSize'
 import Product from './components/Product';
-import {displayData, addToCart, sortedData, filterSize, getSizesMenu} from './actions'
+import { displayData, addToCart, sortedData, filterSize, getSizesMenu } from './actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -54,6 +54,7 @@ class App extends Component {
             </form>
           </header>
           <div className="main-container">
+
           <ProductSize product={this.props.itemsDisplay} handleCheck={(e)=>this.handleCheck(e)}/>
        
           <div>

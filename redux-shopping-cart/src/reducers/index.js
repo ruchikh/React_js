@@ -30,6 +30,10 @@ export default function rootReducer(state = initialState, action){
       	}
       }
       case "ADD_TO_CART":
+      var filterItems = state.favourites.filter((val) => {
+          console.log(val.index)
+        }
+      )
       return {
       	...state,
       	favourites: [...state.favourites, action.index]

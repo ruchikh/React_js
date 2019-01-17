@@ -8,6 +8,7 @@ let mapStateToProps = state => {
 class  Cart extends Component{
  state = {
  	isShowing: false,
+ 	cart: []
  }
 
   handleClick = () => {
@@ -22,7 +23,7 @@ class  Cart extends Component{
 			return  acc
 		}, 0)}`)
   }
-  
+
   handleDelete = (index) => {
   	this.props.cartItems.splice(index, 1)
   	this.setState({
@@ -46,7 +47,7 @@ class  Cart extends Component{
 										<img src={require(`./image/${item.sku}_1.jpg`)}  />
 										<h6>{item.title}</h6>
 										<p>{item.currencyFormat}{item.price}</p>
-										<p>Quantity : 1</p>	
+										<p>Quantity : {item.quantity}</p>	
 							
 										<div className="cart-delete" onClick ={() => {this.handleDelete(index)}}>X</div>
 									</div>
@@ -58,18 +59,19 @@ class  Cart extends Component{
 							})
 						}
 						<div className="subtotal">
-						<h2>Total Price  :  {
-							this.props.cartItems.reduce((acc, v) => {
-								acc = acc+v.price
-								return acc
-							}, 0)
-						}</h2>
-						<button className="cart-btn" onClick={this.handleCheckout}>CHECKOUT</button>
+							<h2>Total Price  :  
+							{
+								this.props.cartItems.reduce((acc, v) => {
+									acc = acc+v.price
+									return acc
+								}, 0)
+							}
+							</h2>
+							<button className="cart-btn" onClick={this.handleCheckout}>CHECKOUT</button>
 						</div>
 					</div>)
 			 : `${this.props.cartItems.length}`
-			}
-			
+			}			
 	</div>
 	)
 }

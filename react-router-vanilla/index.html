@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React-router-vanilla</title>
+	<script type="text/javascript" src="./js/homepage.js"></script>
+	<script type="text/javascript" src='./js/about.js'></script>
+	<script type="text/javascript" src='./js/contact.js'></script>
+</head>
+<body>
+	<div id="main">
+		<nav>
+			<ul>
+				<li><a href="#" onclick="onNavClick('/'); return false;">Home</a></li>
+				<li><a href="#" onclick="onNavClick('/about'); return false;">About</a></li>
+				<li><a href="#" onclick="onNavClick('/contact'); return false;">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div id="content"></div>
+
+	<script type="text/javascript" src="./index.js"></script>
+
+
+</body>
+</html>

@@ -9,7 +9,7 @@ class ProductSize extends Component{
       <div className="product-size">
        {
         
-       sizeArray.map((value, i) => {
+        sizeArray.map((value, i) => {
           return (
             
             <ul>
@@ -22,8 +22,7 @@ class ProductSize extends Component{
 
             }
             </ul>
-            )
-          
+          ) 
         })
         
       }

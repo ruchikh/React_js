@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.data-container{
+  margin: 2em 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  text-align: center;
+}
+
+.avatar{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.img-bg {
+  background: rgb(0, 38, 51);
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.img-card{
+  background: rgb(0, 38, 51);
+  color: white;
+}
+
+
+table {
+  /*font-family: animation-iteration-count: al, sans-serif;*/
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 10px;
+}
+
+.compare-list{
+  grid-gap: 20px;
+  text-align: center;
+  display: inline-block;
+}
+h1{
+  text-align: center;
+  box-shadow: 5px 5px 5px 5px #ccc;
+  padding: 15px 10px;
+}
+.user-btn{
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background: white;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
