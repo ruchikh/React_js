@@ -14,5 +14,12 @@ code {
 }
 
 .home{
-	width: 60%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  input{
+    display: block;
+    margin: 10px 0;
+  }
 }
+

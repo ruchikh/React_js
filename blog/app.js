@@ -40,39 +40,6 @@ if(process.env.NODE_ENV === 'development') {
 
 
 app.use(require('./server/routes/route'));
-// app.use(require('./server/routes/api'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(port, ()=> {
 	console.log(`listning on ${port}`)
