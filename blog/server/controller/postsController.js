@@ -76,18 +76,11 @@ module.exports = {
 
 	updatePost: (req, res) => {
 		const postId = req.params.id;
-		Posts.findByIdAndUpdate({postId}, req.body {new: true}, (err) => {
+		Posts.findByIdAndUpdate({_id:postId}, req.body, {new: true}, (err, post) => {
 			if(err){
 				res.send(err)
-			}else {
-				Posts.findById({postId}, (err, post) => {
-					if(err){
-						res.send(err)
-					}else res.json(post)
-				})
-			}
+			}else res.json(post)
 		})
-
 	}
 
 

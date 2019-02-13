@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-import {getSingleBlog, addComment, allComment, deleteComment} from '../actionCreator/action'
+import {getSingleBlog, addComment, allComment, deleteComment} from '../actionCreator/action';
+import {Link} from "react-router-dom";
 
 
 class PostDetails extends Component {
@@ -31,11 +32,6 @@ class PostDetails extends Component {
     this.props.dispatch(deleteComment(id, postId))
   }
 
-  handleUpdate = () => {
-    const id = this.props.match.params.id;
-    this.props.dispatch(updatePost(id))
-  }
-
   componentDidMount(){
     const id = this.props.match.params.id;
     this.props.dispatch(getSingleBlog(id));
@@ -49,6 +45,7 @@ class PostDetails extends Component {
         <div>
           <h1>{article.title}</h1>
           <p>{article.description}</p>
+          <button><Link to={`/article/${article._id}/edit`}>update</Link></button>
         </div>
 
         <ul>
@@ -67,7 +64,6 @@ class PostDetails extends Component {
         <div>
           <textarea cols="30" rows="5" placeholder="Write Comment" onChange={this.handleChange}/>
           <input type="button" value="Comment" onClick={this.handleClick}/>
-          <input type="button" value="update" onClick={this.handleUpdate}/>
         </div>
       </div>
     )

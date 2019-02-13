@@ -15,11 +15,36 @@ code {
 
 .home{
   max-width: 1000px;
+  width: 80%;
   margin: 0 auto;
-
   input{
     display: block;
     margin: 10px 0;
+    padding: 8px 50px;
   }
 }
 
+.article-list{
+  border: 1px solid grey;
+  padding: 20px 10px;
+}
+
+.header{
+  background: #0d0d0d;
+  color: white;
+  width: 80%;
+  margin: 0 auto;
+  padding: 6px 10px;
+}
+
+link {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+// .App{
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+// }

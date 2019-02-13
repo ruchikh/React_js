@@ -22,6 +22,7 @@ class Posts extends Component {
           this.props.dispatch(getAllArticles())
       }
     }))
+    
   }
 
   componentDidMount(){
@@ -30,7 +31,6 @@ class Posts extends Component {
 
   render(){
     const {articles} = this.props;
-    console.log(articles)
     return (
       <div className="home">
         <form>
@@ -39,10 +39,13 @@ class Posts extends Component {
           <input type="button" value="Submit" onClick={this.addArticle}/> 
         </form>
 
-        <ul>
+        <ul >
         {
           articles && articles.map(article => 
-          <li><Link to={`/article/${article._id}`}>{article.title}</Link></li>
+          <div className="article-list">
+            <h2><Link to={`/article/${article._id}`}>{article.title}</Link></h2>
+            <p>Read More...</p>
+          </div>
           )
         }
         </ul>

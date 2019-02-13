@@ -79,14 +79,14 @@ export function deleteComment(id, postId){
 	}
 }
 
-export function updatePost(postId){
+export function updatePost(data, id, cb){
 	return (dispatch) => {
-		fetch(`${url}/article/${postId}`, {
+		fetch(`${url}/article/${id}/edit`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(data)
-		}).then(res => res.json()).then(data => console.log(data))
+		}).then(res => res.json()).then(data => cb(true) )
 	}
 }
