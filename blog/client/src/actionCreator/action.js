@@ -63,3 +63,30 @@ export function allComment(id){
 		})
 	}
 }
+
+export function deleteComment(id, postId){
+	return (dispatch) => {
+		fetch(`${url}/article/${postId}/comment`,{
+			method: 'DELETE',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({id})
+		}).then(res => res.json())
+		.then(data => {
+			dispatch({type: "ALL_COMMENTS", data})
+		})
+	}
+}
+
+export function updatePost(postId){
+	return (dispatch) => {
+		fetch(`${url}/article/${postId}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		}).then(res => res.json()).then(data => console.log(data))
+	}
+}
