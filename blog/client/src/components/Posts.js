@@ -36,7 +36,10 @@ class Posts extends Component {
         <form>
           <input type="text" name="title" onChange={this.handleChange} placeholder="Title"/>
           <textarea cols="50" rows="10" name="description" onChange={this.handleChange} placeholder="Write story"/>
-          <input type="button" value="Submit" onClick={this.addArticle}/> 
+          <div>
+          <button onClick={this.addArticle}>Submit</button> 
+          <hr></hr>
+          </div>
         </form>
 
         <ul >
@@ -44,7 +47,6 @@ class Posts extends Component {
           articles && articles.map(article => 
           <div className="article-list">
             <h2><Link to={`/article/${article._id}`}>{article.title}</Link></h2>
-            <p>Read More...</p>
           </div>
           )
         }

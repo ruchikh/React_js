@@ -74,6 +74,21 @@ module.exports = {
 
 	},
 
+	deletePost: (req, res) => {
+		const postId = req.params.id;
+		Posts.deleteOne({_id:postId}, (err) => {
+			if(err){
+				res.send(err)
+			}else {
+				Posts.find({}, (err, posts) => {
+					if(err){
+						res.send(err)
+					}else res.json(posts)
+				})
+			}
+		})
+	},
+
 	updatePost: (req, res) => {
 		const postId = req.params.id;
 		Posts.findByIdAndUpdate({_id:postId}, req.body, {new: true}, (err, post) => {

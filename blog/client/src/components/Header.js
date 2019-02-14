@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 // import index from '../index.scss';
 
 class Header extends Component {
@@ -8,7 +9,7 @@ class Header extends Component {
     return (
       <div className="">
         <div className="header">
-          <h1>Blogger</h1>
+          <Link to='/'><h2>Blogger</h2></Link>
         </div>
       </div>
     )

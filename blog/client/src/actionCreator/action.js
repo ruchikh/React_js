@@ -65,6 +65,7 @@ export function allComment(id){
 }
 
 export function deleteComment(id, postId){
+	console.log(postId)
 	return (dispatch) => {
 		fetch(`${url}/article/${postId}/comment`,{
 			method: 'DELETE',
@@ -75,6 +76,22 @@ export function deleteComment(id, postId){
 		}).then(res => res.json())
 		.then(data => {
 			dispatch({type: "ALL_COMMENTS", data})
+		})
+	}
+}
+
+export function deletePost(postId, cb){
+	return (dispatch) => {
+		fetch(`${url}/article/${postId}`,{
+			method: 'DELETE',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({postId})
+		}).then(res => res.json())
+		.then(data => {
+			dispatch({type: "GET_ALL_POSTS", data: data.articles});
+			cb(true);
 		})
 	}
 }
@@ -90,3 +107,16 @@ export function updatePost(data, id, cb){
 		}).then(res => res.json()).then(data => cb(true) )
 	}
 }
+
+export function editComment(data, id, cb){
+	return (dispatch) => {
+		fetch(`${url}/article/${id}/comment/edit`, {
+			methods: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		}).then(res => res.json()).then(data => cb(true))
+	}
+}
+

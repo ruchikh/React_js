@@ -4,21 +4,20 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
 // import index from '../index.scss';
 
-class UpdatePost extends Component {
+class UpdateComment extends Component {
   state = {
-    title: "",
-    description: ''
+    value: "",
   }
 
   handleUpdate = (e) => {
     this.setState({
-    [e.target.name]: e.target.value
+    value: e.target.value
     })
   }
 
   handleSubmit = (e) => {
     const id = this.props.match.params.id;
-    this.props.dispatch(updatePost(this.state, id, (succeed) => {
+    this.props.dispatch(editComment(this.state, id, (succeed) => {
       if(succeed){
         this.props.history.push(`/article/${id}`)
       }
@@ -27,17 +26,15 @@ class UpdatePost extends Component {
 
   componentDidMount() {
     this.setState({
-      title: this.props.article.title,
-      description: this.props.article.description
+      value: this.props.article.title,
     })
   }
   
   render(){
-    const {article} = this.props;
+    const {Commnets} = this.props;
     return (
       <div className="home">
-        <input type="text" name="title" value={this.state.title}  onChange={this.handleUpdate}/>
-        <textarea cols="10" rows="10" name="description" value={this.state.description} onChange={this.handleUpdate}/>
+        <input type="text" name="title" value={this.state.value}  onChange={this.handleUpdate}/>
         <button onClick={this.handleSubmit}>Submit</button>
       </div>
     )
@@ -46,8 +43,8 @@ class UpdatePost extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    article: state.singleArticle
+    Comments: state.comments
   }
 }
 
-export default connect(mapStateToProps)(UpdatePost);
+export default connect(mapStateToProps)(UpdateComment);

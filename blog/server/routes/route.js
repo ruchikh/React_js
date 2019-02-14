@@ -17,6 +17,9 @@ router.post('/api/article/:id/comment', postsController.postComment);
 router.get('/api/article/:id/comment', postsController.allComment);
 router.delete('/api/article/:id/comment', postsController.deleteComment);
 router.put('/api/article/:id/edit', postsController.updatePost);
+router.delete('/api/article/:id', postsController.deletePost);
+router.put('/api/article/:id/comment/edit', postsController.editComment)
+
 
 
 
