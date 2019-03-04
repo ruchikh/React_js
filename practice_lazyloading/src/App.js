@@ -26,7 +26,7 @@ class App extends Component {
     const mystory = `${this.state.about}`
     return (
       <div className="App">
-      <div className="header">PDFGenerator</div>
+      <div className="header">PDFCreator</div>
         <input type="text" name="name" placeholder="Enter Your Name" onChange={this.handleNameChange}/>
         <textarea type="text" rows="6" name="about" placeholder="write about yourself" onChange={this.handleNameChange} />
         <button onClick={this.handleClick}>Generate PDF</button>

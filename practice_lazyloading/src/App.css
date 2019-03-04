@@ -53,8 +53,9 @@ button{
 
 .header{
   background: white;
-  text-align: center;
+  /*text-align: center;*/
   padding: 20px;
+  font-size: 20px
 }
 
 .loading{
