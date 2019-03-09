@@ -23,10 +23,19 @@ module.exports = {
 		})
 	},
 
-	editItem: (req, res) => {
-		event_Id = req.params.id
+	getSingleItems: (req, res) => {
+		const id = req.params.item_id;
 		console.log(id)
-		Item.findByIdAndUpdate(id, (err, data) => {
+		Item.findById(id, (err, data) => {
+			if(err) res.send(err)
+				res.json(data)
+		})
+	},
+
+	editItem: (req, res) => {
+		const item_Id = req.params.item_id
+		console.log(item_Id)
+		Item.findByIdAndUpdate({_id:item_Id}, req.body, {new:true}, (err, data) => {
 			if(err) res.send(err)
 				res.json(data)
 		})

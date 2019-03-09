@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import {Link} from "react-router-dom"
 import {addItems, getItems, editItem} from '../actions'
 
 class Home extends Component {
@@ -7,7 +8,8 @@ class Home extends Component {
 	state = {
 		item: "",
 		quantity: "",
-		isAvailable: true
+		isAvailable: true,
+		outOfStockItems: []
 
 	}
 
@@ -33,6 +35,12 @@ handleEdit = () => {
  this.props.dispatch(editItem(itemid))
 }
 
+filterOutofStockItems = () => {
+	this.setState({
+		outOfStockItems:this.props.items.filter(item => item.quantity === 0 || item.quantity === null),
+	})
+}
+
 componentDidMount(){
 	const itemid = this.props.match.params.id
 	console.log(itemid)
@@ -42,9 +50,9 @@ componentDidMount(){
   render() {
   	const {items} = this.props;
     return (
-      <div className="home">
+      	<div className="home">
 	      <form>
-	        <input type="text" placeholder="Enter Item" name="item" onChange={this.handleChange}/>
+	        <input type="text" placeholder="Enter Item" name="item" onChange={this.handleChange} required/>
 	        <input type="text" placeholder="Enter quantity" name="quantity" onChange={this.handleChange}/>
 	        <button onClick={this.handleSubmit}>Submit</button>
 	      </form>
@@ -55,12 +63,23 @@ componentDidMount(){
 	      		<div className="itemlist">
 	      			<p>Item: {item.item}</p>
 	      			<p>Quantity: {item.quantity}</p>
-	        		<button onClick={() => {this.handleEdit(item._id)}}>Edit</button>
+	        		<Link to={`/items/${item._id}/edit`}>Edit</Link>
 	      		</div>
 
 	      		)
 	      	}
 	      </div>
+
+	      <div>
+      	<button onClick={this.filterOutofStockItems}>OutOfStockItems</button>
+      	<div>
+      		{
+      			this.state.outOfStockItems && this.state.outOfStockItems.map(item =>
+      			<h2>{item.item}</h2>
+      			 )
+      		}
+      	</div>
+      	</div>
       </div>
     );
   }

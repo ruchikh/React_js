@@ -1,5 +1,6 @@
 let initialState = {
 	itemList: [],
+      singleItem: {}
 }
 
 export default function rootReducer(state=initialState, action){
@@ -8,6 +9,11 @@ export default function rootReducer(state=initialState, action){
       return {
       	...state,
       	itemList: action.data
+      }
+      case "GET_SINGLE_ITEM":
+      return{
+            ...state,
+            singleItem: action.data
       }
       default: return state
       }

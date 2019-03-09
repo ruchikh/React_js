@@ -29,10 +29,21 @@ export function getItems(){
 	}
 }
 
-
-export function editItem(data, itemid){
+export function getSingleItems(itemId, cb){
 	return dispatch => {
-		fetch(`${url}/item/${itemid}/edit`, {
+		fetch(`${url}/items/${itemId}`).then(res => res.json()).then(data => {
+			console.log(data)
+			dispatch({type:"GET_SINGLE_ITEM", data})
+			cb(true, data)
+		})
+	}
+}
+
+
+export function editItem(data, itemId, cb){
+	console.log(data)
+	return dispatch => {	
+		fetch(`${url}/item/${itemId}/edit`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
@@ -43,6 +54,7 @@ export function editItem(data, itemid){
 		.then(data => {
 			console.log(data)
 			dispatch({type:"EDIT_ITEM", data})
+			cb(true)
 		})
 	}
 }

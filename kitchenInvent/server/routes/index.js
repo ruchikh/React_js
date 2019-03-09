@@ -7,7 +7,8 @@ const itemController = require('../controller/itemController')
 
 router.post('/api/items', itemController.addItems);
 router.get('/api/items', itemController.getItems);
-router.put('/api/items/:item_id/edit', itemController.editItem)
+router.get('/api/items/:item_id', itemController.getSingleItems);
+router.put('/api/item/:item_id/edit', itemController.editItem)
 
 router.get('*', (err, res)=>{
   res.render('index');

@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const app = express();
+const passport = require('passport');              
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo")(session);
 const bodyParser = require("body-parser");
@@ -34,6 +35,9 @@ app.use(
  })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 if (process.env.NODE_ENV === "development") {
  var webpack = require("webpack");
  var webpackConfig = require("./webpack.config");
@@ -48,8 +52,9 @@ if (process.env.NODE_ENV === "development") {
 
  app.use(require("webpack-hot-middleware")(compiler));
 }
-
 app.use(cors());
+
+// require('./server/module/passport')(passport)
 
 // app.use("/api", require("./server/routes/index"));
 app.use(require("./server/routes/index"));
