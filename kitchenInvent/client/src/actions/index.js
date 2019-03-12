@@ -60,3 +60,66 @@ export function editItem(data, itemId, cb){
 }
 
 
+/*LogIn Signup*/
+
+export function createUser(data, cb){
+	console.log(data)
+	return (dispatch) => {
+		fetch(`${url}/signup`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		}).then(res => res.json()).then(data =>{
+			console.log(data)
+			dispatch({type:"POST_USER", data})
+			cb(true)
+		})
+	}
+}
+
+
+export function loginUser(data){
+	console.log(data)
+	return (dispatch) => {
+		fetch(`${url}/signin`,{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		}).then(res => res.json()).then(data => {
+			console.log(data)
+			if(data.user._id){
+				dispatch({type:"LOGIN_SUCCESS", data: data.user})
+			}else {
+				dispatch({type:"LOGIN_ERR", data})
+			}
+		})
+	}
+}
+
+export function isLoggedIn(){
+	return (dispatch) => {
+		fetch(`/api/isLoggedIn`).then(res => res.json()).then(data => {
+			dispatch({
+				type: "LOGIN_SUCCESS",
+				data: data.user
+			})
+		})
+	}
+}
+
+
+export function loggedOut(cb) {
+  return dispatch => {
+    fetch('/api/logout').then(res => res.json())
+    .then(data => {
+      dispatch({type: 'LOGOUT_SUCCESS', data})
+      cb(true)
+    })
+  }
+}
+
+

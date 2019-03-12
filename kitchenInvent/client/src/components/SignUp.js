@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import {addItems, getItems, editItem} from '../actions'
+import {createUser} from '../actions'
 
 class SignUp extends Component {
 
 	state = {
-		Username: "",
-		Email: "",
+		username: "",
+		email: "",
 		password: ""
-
 	}
 
 	handleChange = (e) => {
@@ -19,15 +18,20 @@ class SignUp extends Component {
 	}
 
 handleSubmit= (e) => {
-	
+	e.preventDefault();
+	console.log("Created User Submit")
+	this.props.dispatch(createUser(this.state, (succeed) => {
+		if(succeed){
+			this.props.history.push('/signin')
+		}
+	}));
 }
-
 
   render() {
     return (
       <div className="signup">
 	      <form>
-	        <input type="text" placeholder="Enter Username" name="item" onChange={this.handleChange}/>
+	        <input type="text" placeholder="Enter Username" name="username" onChange={this.handleChange}/>
 	        <input type="text" placeholder="Email" name="email" onChange={this.handleChange}/>
 	       	<input type="password" placeholder="password" name="password" onChange={this.handleChange}/>
 	        <button onClick={this.handleSubmit}>Submit</button>

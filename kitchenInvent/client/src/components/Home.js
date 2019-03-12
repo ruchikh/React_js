@@ -36,8 +36,9 @@ handleEdit = () => {
 }
 
 filterOutofStockItems = () => {
+	console.log("filter item")
 	this.setState({
-		outOfStockItems:this.props.items.filter(item => item.quantity === 0 || item.quantity === null),
+		outOfStockItems:this.props.items.filter(item => item.quantity == 0 || item.quantity == null)
 	})
 }
 
@@ -52,7 +53,7 @@ componentDidMount(){
     return (
       	<div className="home">
 	      <form>
-	        <input type="text" placeholder="Enter Item" name="item" onChange={this.handleChange} required/>
+	        <input type="text" placeholder="Enter Item" name="item" onChange={this.handleChange}/>
 	        <input type="text" placeholder="Enter quantity" name="quantity" onChange={this.handleChange}/>
 	        <button onClick={this.handleSubmit}>Submit</button>
 	      </form>
@@ -61,7 +62,7 @@ componentDidMount(){
 	      	{
 	      		items && items.map(item => 
 	      		<div className="itemlist">
-	      			<p>Item: {item.item}</p>
+	      			<p>Item Name: {item.item}</p>
 	      			<p>Quantity: {item.quantity}</p>
 	        		<Link to={`/items/${item._id}/edit`}>Edit</Link>
 	      		</div>

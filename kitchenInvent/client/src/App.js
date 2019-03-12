@@ -3,7 +3,7 @@ import './App.scss';
 import Home from './components/Home.js';
 import EditItem from './components/EditItem'
 import SignUp from './components/SignUp'
-// import SingIn from './components/SingIn'
+import SignIn from './components/SignIn'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
@@ -15,6 +15,7 @@ class App extends Component {
         		<Route exact path='/' component={Home}/>
             <Route path='/items/:item_id/edit' component={EditItem}/>
             <Route path='/signup' component={SignUp}/>
+            <Route path='/signin' component={SignIn}/>
         	</Switch>
         </div>
       </BrowserRouter>

@@ -54,10 +54,12 @@ if (process.env.NODE_ENV === "development") {
 }
 app.use(cors());
 
-// require('./server/module/passport')(passport)
+require('./server/module/passport')(passport)
 
-// app.use("/api", require("./server/routes/index"));
+// app.use("/api", require("./server/routes/api"));
 app.use(require("./server/routes/index"));
+app.use("*", require("./server/routes"));
+
 
 app.listen(port, () => {
  console.log(`server is running on http://localhost:${port}`);

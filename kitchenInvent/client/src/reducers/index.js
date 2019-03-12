@@ -1,6 +1,7 @@
 let initialState = {
 	itemList: [],
-      singleItem: {}
+      singleItem: {},
+      currentUser: {}
 }
 
 export default function rootReducer(state=initialState, action){
@@ -14,6 +15,11 @@ export default function rootReducer(state=initialState, action){
       return{
             ...state,
             singleItem: action.data
+      }
+      case "LOGIN_SUCCESS":
+      return {
+            ...state,
+            currentUser: action.data
       }
       default: return state
       }
