@@ -114,3 +114,29 @@ module.exports = {
 
 }
 
+
+
+
+//           <div className="fight-cards">
+//           <div>
+//             <p>{events.title}</p>
+//           </div>
+//           <div>
+//           {
+//             players && players.map(player => 
+//               <img src={player.image}/>
+//             )
+//           }
+//             <button className="nextfight-btn" onClick={this.handleNextFight}>Next</button>
+//             <button className="prevfight-btn" onClick={this.handlePrevFight}>Prev</button>
+
+//           </div>          
+//           <div>
+//             <h3>{title}</h3>
+//             <span>{rounds}</span>
+//             <p>{type}</p>
+//           </div>
+//           <div>
+//             <button>Predict</button>
+//           </div>
+//         </div>
