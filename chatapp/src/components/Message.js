@@ -12,4 +12,4 @@ Message.propTypes = {
   author: PropTypes.string.isRequired
 }
 
-export default Message
+export default Message;

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Message from "./Message";
+import {connect} from "react-redux";
 
 const MessagesList = ({ messages }) => (
   <section id="messages-list">
@@ -25,4 +26,9 @@ MessagesList.propTypes = {
   ).isRequired
 }
 
-export default MessagesList
+const mapStateToProps = (state) => {
+	return {
+		messages: state.messages
+	}
+}
+export default connect(mapStateToProps)(MessagesList)

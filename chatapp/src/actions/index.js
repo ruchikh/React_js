@@ -1,7 +1,7 @@
 import * as types from './ActionTypes'
 
 let nextMessageId = 0
-const nextUserId = 0
+var nextUserId = 0
 
 export const addMessage = (message, author) => ({
   type: types.ADD_MESSAGE,

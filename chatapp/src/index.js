@@ -1,25 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import {Provider} from "react-redux";
-import {createStore, compose, applyMiddleware} from 'redux';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import './index.css'
+import App from './App'
 import * as serviceWorker from './serviceWorker';
-import thunk from 'redux-thunk'
-import chatApp from './reducers'
-import { addUser } from './actions'
+import createSagaMiddleware from 'redux-saga';
+import chatApp from './reducers';
+import handleNewMessage from './sagas'
+import setupSocket from './socket'
+import username from './utils/name';
+const sagaMiddleware = createSagaMiddleware()
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(chatApp, composeEnhancers(applyMiddleware(thunk)))
+const store = createStore(chatApp, applyMiddleware(sagaMiddleware));
+const socket = setupSocket(store.dispatch, username);
+sagaMiddleware.run(handleNewMessage, { socket, username });
 
-store.dispatch(addUser('Me'))
-
-ReactDOM.render(<Provider store={store}>
-	<App />
-	</Provider>
-	, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+serviceWorker.register()
