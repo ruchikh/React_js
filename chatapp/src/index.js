@@ -14,7 +14,7 @@ const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(chatApp, applyMiddleware(sagaMiddleware));
 const socket = setupSocket(store.dispatch, username);
-sagaMiddleware.run(handleNewMessage, { socket, username });
+sagaMiddleware.run(handleNewMessage, { socket, username, dispatch: store.dispatch });
 
 ReactDOM.render(
   <Provider store={store}>
@@ -23,3 +23,4 @@ ReactDOM.render(
   document.getElementById('root')
 )
 serviceWorker.register()
+

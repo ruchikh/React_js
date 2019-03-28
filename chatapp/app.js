@@ -1,52 +1,36 @@
-const WebSocket = require('ws')
+var server = require('http').Server(app);
+var io = require('socket.io')(server)
 
-const wss = new WebSocket.Server({ port: 8989 })
 
-const users = []
+const users = {}
+io.on('connection', function (socket) {
+  console.log('a user connected');
 
-const broadcast = (data, ws) => {
-  wss.clients.forEach((client) => {
-    if (client.readyState === WebSocket.OPEN && client !== ws) {
-      client.send(JSON.stringify(data))
-    }
-  })
-}
-
-wss.on('connection', (ws) => {
-  let index
-  ws.on('message', (message) => {
-    const data = JSON.parse(message)
-    switch (data.type) {
-      case 'ADD_USER': {
-        index = users.length
-        users.push({ name: data.name, id: index + 1 })
-        ws.send(JSON.stringify({
-          type: 'USERS_LIST',
-          users
-        }))
-        broadcast({
-          type: 'USERS_LIST',
-          users
-        }, ws)
-        break
-      }
-      case 'ADD_MESSAGE':
-        broadcast({
-          type: 'ADD_MESSAGE',
-          message: data.message,
-          author: data.author
-        }, ws)
-        break
-      default:
-        break
-    }
+  socket.on('chatting', (data) => {
+    console.log(data)
+    io.sockets.emit('chatting', data)
   })
 
-  ws.on('close', () => {
-    users.splice(index, 1)
-    broadcast({
-      type: 'USERS_LIST',
-      users
-    }, ws)
+  socket.on('online', (username) => {
+    users[username] = socket.id;
+    // io.emit('userList', users, users[users.length].id);
   })
-})
+  socket.on('sendMsg', (data) => {
+    console.log(data, "check1")
+    socket.emit('sendMsg', data)
+  })
+
+  socket.on('getMsg', (data) => {
+    console.log(data, "check2")
+    socket.broadcast.to(users[data.to]).emit('getMsg', {
+      msg: data.msg,
+      from: data.from,
+      author: data.author
+    });
+  });
+  socket.on('disconnect', () => {
+    console.log(socket.id)
+    delete users[Object.keys(users)[Object.values(users).indexOf(socket.id)]]
+  })
+});
+
