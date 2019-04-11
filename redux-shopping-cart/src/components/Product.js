@@ -29,5 +29,10 @@ const { productArray, handleClick } = props;
 	
 }
 
+const mapStateToProps = (state) => {
+	return {
+	favourites: state.favourites
+	}
+}
 
-export default Product
+export default connect(mapStateToProps)(Product)

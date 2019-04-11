@@ -16,14 +16,12 @@ export default function rootReducer(state = initialState, action){
       	allItems: action.data
       }
       case 'GET_SIZES_MENU': {
-      	console.log(state.shoppingItems)
       	const sizeArray =  state.allItems.reduce((acc, v) => {
           v.availableSizes.forEach(value => {
             if(!acc.includes(value)) acc.push(value)
           })
               return acc
         }, [])
-        console.log(sizeArray)
       	return {
       		...state,
       		availSizes: sizeArray
@@ -31,9 +29,10 @@ export default function rootReducer(state = initialState, action){
       }
       case "ADD_TO_CART":
       var filterItems = state.favourites.filter((val) => {
-          console.log(val.index)
+        return val
         }
       )
+      console.log(filterItems)
       return {
       	...state,
       	favourites: [...state.favourites, action.index]
@@ -45,7 +44,6 @@ export default function rootReducer(state = initialState, action){
       }
       case "FILTER_SIZE":{
       	var filterSize = state.allItems.filter((v, i) => v.availableSizes.includes(action.index));
-      	console.log(filterSize)
       return {
       	...state,
       	shoppingItems: filterSize

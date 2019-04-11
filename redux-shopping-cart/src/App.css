@@ -239,3 +239,12 @@ h2{
   right: 5%;
   top: 0%;
 }
+
+.cart_item{
+  position: relative;
+}
+.cart-delete{
+  position:absolute;
+  top: 6%;
+  right: 5%; 
+}
