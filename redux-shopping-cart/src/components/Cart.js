@@ -46,9 +46,7 @@ class  Cart extends Component{
 									<div className="data-views" key={index}> 
 										<img src={require(`./image/${item.sku}_1.jpg`)}  />
 										<h6>{item.title}</h6>
-										<p>{item.currencyFormat}{item.price}</p>
-										<p>Quantity : 0</p>	
-							
+										<p>{item.currencyFormat}{item.price}</p>							
 										<div className="cart-delete" onClick ={() => {this.handleDelete(index)}}>X</div>
 									</div>
 
